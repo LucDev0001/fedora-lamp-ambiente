@@ -167,28 +167,3 @@ Para ter um ícone no menu de aplicativos, siga estes passos:
 <!-- end list -->
 
 ````
-
----
-### Passo 4: Enviar os Arquivos para o GitHub
-
-Agora que seus arquivos estão na pasta e o `README.md` está pronto, vamos enviá-los para o seu repositório no GitHub.
-
-1.  **Navegue até a pasta do seu projeto (se não já estiver nela):**
-    ```bash
-    cd ~/ProjetosGitHub/fedora-lamp-ambiente
-    ```
-2.  **Adicione os novos arquivos ao Git:**
-    ```bash
-    git add dev dev-launcher preparar_ambiente.sh README.md
-    ```
-3.  **Crie um "commit" (um registro das suas alterações):**
-    ```bash
-    git commit -m "Adiciona scripts de setup e README com instruções completas"
-    ```
-4.  **Envie as alterações para o GitHub:**
-    ```bash
-    git push
-    ```
-
-Pronto! Agora seu projeto está salvo e documentado no GitHub. Você pode ver os arquivos e as instruções na página do seu repositório.
-````
