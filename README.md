@@ -1,68 +1,6 @@
-Com certeza\! Criar um repositório no GitHub para guardar e documentar esse ambiente que montamos é uma excelente ideia. Isso não só salva seu trabalho, como também pode ajudar outras pessoas.
+Claro, aqui está novamente o conteúdo completo para o arquivo `README.md`.
 
-Vou te guiar passo a passo para criar o repositório, organizar os arquivos e escrever um `README.md` completo com todas as instruções.
-
------
-
-### Passo 1: Criar o Repositório no GitHub
-
-1.  Vá para [GitHub.com](https://github.com) e faça login.
-2.  No canto superior direito, clique no ícone **`+`** e selecione **"New repository"**.
-3.  **Repository name:** Dê um nome, por exemplo, `fedora-lamp-ambiente`.
-4.  **Description:** Adicione uma descrição, como "Scripts e instruções para configurar um ambiente de desenvolvimento LAMP (Apache, MariaDB, PHP) no Fedora".
-5.  Marque a opção **"Public"** para que outras pessoas possam ver (ou "Private" se preferir).
-6.  **IMPORTANTE:** Marque a caixa **"Add a README file"**.
-7.  Clique em **"Create repository"**.
-
------
-
-### Passo 2: Organizar os Arquivos Localmente
-
-Agora vamos criar uma pasta no seu computador, clonar o repositório que você acabou de criar e copiar nossos scripts para dentro dela.
-
-1.  **Crie uma pasta para o projeto:**
-
-    ```bash
-    mkdir ~/ProjetosGitHub
-    cd ~/ProjetosGitHub
-    ```
-
-2.  **Clone seu repositório:**
-    Na página do seu repositório no GitHub, clique no botão verde **"\< \> Code"** e copie a URL (HTTPS). Depois, execute o comando abaixo, substituindo a URL pela sua:
-
-    ```bash
-    git clone https://github.com/SEU_USUARIO/fedora-lamp-ambiente.git
-    ```
-
-3.  **Entre na pasta do projeto:**
-
-    ```bash
-    cd fedora-lamp-ambiente
-    ```
-
-4.  **Copie os scripts que fizemos para esta pasta:**
-    Nós criamos três scripts principais. Vamos copiá-los para o seu novo diretório de projeto.
-
-    ```bash
-    # Script de gerenciamento (start/stop/status)
-    cp /usr/local/bin/dev ./
-
-    # Script do lançador gráfico (que o ícone usa)
-    cp /usr/local/bin/dev-launcher ./
-
-    # Script de preparação de permissões (que rodamos uma vez)
-    cp ~/Documentos/preparar_ambiente.sh ./ 
-    ```
-
-    *(Estou assumindo que o `preparar_ambiente.sh` ainda está na sua pasta Documentos. Se estiver em outro lugar, ajuste o caminho).*
-
------
-
-### Passo 3: Escrever o Arquivo `README.md`
-
-Este é o manual de instruções do seu projeto. Abra o arquivo `README.md` que está na sua pasta `fedora-lamp-ambiente` com o VS Code ou outro editor.
-
-Apague o conteúdo padrão e **cole o texto abaixo**. Ele contém todas as instruções baseadas no que fizemos.
+É só copiar e colar no seu editor de texto e salvar no arquivo `README.md` do seu projeto.
 
 ````markdown
 # Ambiente de Desenvolvimento LAMP para Fedora
@@ -166,4 +104,5 @@ Para ter um ícone no menu de aplicativos, siga estes passos:
 
 <!-- end list -->
 
-````
+```
+```
