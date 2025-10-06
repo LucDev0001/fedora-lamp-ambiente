@@ -1,5 +1,7 @@
 # Ambiente de Desenvolvimento LAMP para Fedora
 
+<img width="1366" height="768" alt="Image" src="https://github.com/user-attachments/assets/b67fb307-0ed1-4df4-9fba-577f44872e03" />
+
 Este repositório contém scripts e instruções para configurar um ambiente de desenvolvimento web completo (Apache, MariaDB, PHP) em uma instalação do Fedora Workstation.
 
 O setup inclui um gerenciador de serviços, um lançador gráfico e configurações de permissões para facilitar o desenvolvimento diário.
