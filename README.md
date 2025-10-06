@@ -1,67 +1,48 @@
 
-4.  **Copie os scripts que fizemos para esta pasta:**
-    Nós criamos três scripts principais. Vamos copiá-los para o seu novo diretório de projeto.
-
-    ```bash
-    # Script de gerenciamento (start/stop/status)
-    cp /usr/local/bin/dev ./
-
-    # Script do lançador gráfico (que o ícone usa)
-    cp /usr/local/bin/dev-launcher ./
-
-    # Script de preparação de permissões (que rodamos uma vez)
-    cp ~/Documentos/preparar_ambiente.sh ./ 
-    ```
-
-    *(Estou assumindo que o `preparar_ambiente.sh` ainda está na sua pasta Documentos. Se estiver em outro lugar, ajuste o caminho).*
-
------
-
-### Passo 3: Escrever o Arquivo `README.md`
-
-Este é o manual de instruções do seu projeto. Abra o arquivo `README.md` que está na sua pasta `fedora-lamp-ambiente` com o VS Code ou outro editor.
-
-Apague o conteúdo padrão e **cole o texto abaixo**. Ele contém todas as instruções baseadas no que fizemos.
 
 ````markdown
 # Ambiente de Desenvolvimento LAMP para Fedora
 
 Este repositório contém scripts e instruções para configurar um ambiente de desenvolvimento web completo (Apache, MariaDB, PHP) em uma instalação do Fedora Workstation.
 
-O setup inclui um gerenciador de serviços, um lançador gráfico e configurações de permissões para facilitar o desenvolvimento.
+O setup inclui um gerenciador de serviços, um lançador gráfico e configurações de permissões para facilitar o desenvolvimento diário.
 
-## 1. Pré-requisitos (Instalação dos Pacotes)
+## Como Instalar
 
-Primeiro, instale todos os pacotes necessários usando o gerenciador `dnf`.
+Siga estes passos em ordem para configurar todo o ambiente a partir de uma instalação limpa do Fedora.
+
+### Passo 1: Instalar os Pacotes (Pré-requisitos)
+
+Primeiro, instale todos os pacotes necessários a partir dos repositórios oficiais do Fedora usando o gerenciador `dnf`.
 
 ```bash
 sudo dnf install httpd mariadb-server php php-mysqlnd php-gd php-cli php-json php-mbstring phpmyadmin zenity
 ````
 
-## 2\. Configuração Inicial do Banco de Dados
+### Passo 2: Configurar o Banco de Dados
 
 Após instalar os pacotes, é crucial configurar e proteger o servidor MariaDB.
 
-1.  Inicie o serviço MariaDB:
+1.  Inicie e habilite o serviço MariaDB para iniciar com o sistema:
     ```bash
     sudo systemctl enable --now mariadb
     ```
-2.  Execute o script de instalação segura para definir a senha do usuário `root` do banco de dados:
+2.  Execute o script de instalação segura para definir a senha do usuário `root` do banco de dados e aplicar configurações de segurança recomendadas:
     ```bash
     sudo mysql_secure_installation
     ```
 
-## 3\. Instalação dos Scripts
+### Passo 3: Configurar os Scripts de Gerenciamento
 
 Os scripts deste repositório automatizam o gerenciamento do ambiente.
 
-1.  **Torne os scripts executáveis:**
+1.  **Torne os scripts deste repositório executáveis:**
 
     ```bash
     chmod +x dev dev-launcher preparar_ambiente.sh
     ```
 
-2.  **Copie os scripts de gerenciamento para o seu PATH:**
+2.  **Copie os scripts de gerenciamento para um diretório do seu PATH**, para que possam ser chamados de qualquer lugar no terminal:
 
     ```bash
     sudo cp dev /usr/local/bin/
@@ -69,7 +50,7 @@ Os scripts deste repositório automatizam o gerenciamento do ambiente.
     ```
 
 3.  **Execute o script de preparação de permissões (APENAS UMA VEZ):**
-    Este script configura as permissões da pasta `/var/www/html` para que você possa editar arquivos sem precisar de `sudo` constantemente.
+    Este script configura as permissões da pasta `/var/www/html` para que você possa criar e editar arquivos sem precisar de `sudo` constantemente.
 
     ```bash
     sudo ./preparar_ambiente.sh
@@ -77,9 +58,9 @@ Os scripts deste repositório automatizam o gerenciamento do ambiente.
 
     **IMPORTANTE:** Após executar, você precisa **fazer logout e login novamente** na sua sessão para que as mudanças de grupo tenham efeito.
 
-## 4\. Configuração do Lançador Gráfico (Ícone no Menu)
+### Passo 4: Configurar o Lançador Gráfico (Ícone no Menu)
 
-Para ter um ícone no menu de aplicativos, siga estes passos:
+Para ter um ícone no menu de aplicativos e gerenciar o ambiente de forma gráfica:
 
 1.  **Baixe um ícone (opcional):**
 
@@ -103,26 +84,29 @@ Para ter um ícone no menu de aplicativos, siga estes passos:
     Categories=Development;
     ```
 
-    **Atenção:** Substitua `SEU_USUARIO` pelo seu nome de usuário.
+    **Atenção:** Na linha `Icon=`, substitua `SEU_USUARIO` pelo seu nome de usuário.
 
 ## Como Usar
 
+Depois de tudo instalado e configurado, você pode gerenciar seu ambiente das seguintes formas:
+
 ### Pelo Terminal
 
-  - **Iniciar:** `sudo dev start`
-  - **Parar:** `sudo dev stop`
+  - **Iniciar serviços:** `sudo dev start`
+  - **Parar serviços:** `sudo dev stop`
   - **Ver Status:** `sudo dev status`
 
 ### Pela Interface Gráfica
 
   - Procure por **"Ambiente DEV"** no seu menu de aplicativos e clique para abrir o menu de gerenciamento.
 
-## Acesso
+## Informações de Acesso
 
   - **Servidor Web:** `http://localhost`
-  - **phpMyAdmin:** `http://localhost/phpmyadmin`
-  - **Pasta de Projetos:** `/var/www/html/`
+  - **Gerenciador de Banco de Dados:** `http://localhost/phpmyadmin`
+  - **Pasta Raiz para Projetos:** `/var/www/html/`
 
 <!-- end list -->
 
-````
+```
+```
