@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# --- Script de Gerenciamento de Ambiente de Desenvolvimento (Apache + MariaDB) ---
+
+# Verifica se o script está sendo executado como root
+if [ "$EUID" -ne 0 ]
+  then echo "ERRO: Por favor, execute este script como root (usando sudo)."
+  exit
+fi
+
+# Função para iniciar os serviços
+start_services() {
+    echo "Iniciando Apache (httpd)..."
+    systemctl start httpd
+    echo "Iniciando MariaDB..."
+    systemctl start mariadb
+    echo ""
+    echo "-------------------------------------------------"
+    echo "Ambiente de Desenvolvimento ATIVO."
+    echo ""
+    echo "Acesso ao Servidor Web: http://localhost"
+    echo "Acesso ao phpMyAdmin:   http://localhost/phpmyadmin"
+    echo "-------------------------------------------------"
+}
+
+# Função para parar os serviços
+stop_services() {
+    echo "Parando Apache (httpd)..."
+    systemctl stop httpd
+    echo "Parando MariaDB..."
+    systemctl stop mariadb
+    echo "Ambiente de Desenvolvimento DESLIGADO."
+}
+
+# Função para ver o status
+show_status() {
+    echo "--- Status do Apache (httpd) ---"
+    systemctl status httpd --no-pager
+    echo ""
+    echo "--- Status do MariaDB ---"
+    systemctl status mariadb --no-pager
+}
+
+# Lógica para ler o argumento (start, stop, status)
+case "$1" in
+    start)
+        start_services
+        ;;
+    stop)
+        stop_services
+        ;;
+    status)
+        show_status
+        ;;
+    *)
+        echo "Uso: sudo $0 {start|stop|status}"
+        exit 1
+        ;;
+esac
+
+exit 0

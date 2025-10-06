@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# --- Script Lançador Gráfico para o Ambiente de Desenvolvimento (Versão Wayland) ---
+
+TITLE="Ambiente DEV"
+TEXT="Selecione uma ação para o seu ambiente de desenvolvimento:"
+
+ACTION=$(zenity --list \
+                --title="$TITLE" \
+                --text="$TEXT" \
+                --column="Ação" \
+                "Iniciar Ambiente" "Parar Ambiente" "Ver Status" --hide-header \
+                --width=300 --height=200)
+
+# Função para exibir o resultado em uma janela de texto do Zenity
+show_result() {
+    zenity --text-info \
+           --title="Resultado da Ação" \
+           --width=600 \
+           --height=400 \
+           --font="monospace"
+}
+
+# Verifica a ação escolhida e executa o comando correspondente
+case "$ACTION" in
+    "Iniciar Ambiente")
+        # pkexec executa o comando com privilégios de admin, abrindo um pop-up para senha.
+        # A saída (output) do comando é enviada para a janela de resultados do Zenity.
+        pkexec /usr/local/bin/dev start | show_result
+        ;;
+
+    "Parar Ambiente")
+        pkexec /usr/local/bin/dev stop | show_result
+        ;;
+
+    "Ver Status")
+        # Usamos 'bash -c' para poder redirecionar a saída de erro (stderr) para a saída padrão (stdout)
+        # garantindo que vejamos todo o output do comando de status.
+        pkexec bash -c "/usr/local/bin/dev status 2>&1" | show_result
+        ;;
+
+    *)
+        # Se o usuário fechar a janela, não faz nada
+        echo "Nenhuma ação selecionada."
+        ;;
+esac
+
+exit 0
