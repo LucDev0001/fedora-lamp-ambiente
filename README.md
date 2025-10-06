@@ -1,20 +1,30 @@
-
-
-````markdown
 # Ambiente de Desenvolvimento LAMP para Fedora
 
 Este repositório contém scripts e instruções para configurar um ambiente de desenvolvimento web completo (Apache, MariaDB, PHP) em uma instalação do Fedora Workstation.
 
 O setup inclui um gerenciador de serviços, um lançador gráfico e configurações de permissões para facilitar o desenvolvimento diário.
 
-## Como Instalar
+## Instalação Rápida (Automática)
 
-Siga estes passos em ordem para configurar todo o ambiente a partir de uma instalação limpa do Fedora.
+Este método é o recomendado. Ele utiliza um script para automatizar todo o processo.
 
-### Passo 1: Instalar os Pacotes (Pré-requisitos)
+1.  **Torne o script de instalação executável:**
+    ```bash
+    chmod +x install.sh
+    ```
+2.  **Execute o script com `sudo`:**
+    ```bash
+    sudo ./install.sh
+    ```
+3.  **Siga as instruções finais:** Ao final, o script pedirá que você execute `sudo mysql_secure_installation` para definir sua senha de banco de dados e, em seguida, que você faça **logout e login novamente** na sua sessão.
 
-Primeiro, instale todos os pacotes necessários a partir dos repositórios oficiais do Fedora usando o gerenciador `dnf`.
+---
 
+## Instalação Manual (Passo a Passo)
+
+Use este método se preferir configurar cada parte individualmente.
+
+### Passo 1: Instalar Pacotes (Pré-requisitos)
 ```bash
 sudo dnf install httpd mariadb-server php php-mysqlnd php-gd php-cli php-json php-mbstring phpmyadmin zenity
 ````
