@@ -1,6 +1,27 @@
-Claro, aqui está novamente o conteúdo completo para o arquivo `README.md`.
 
-É só copiar e colar no seu editor de texto e salvar no arquivo `README.md` do seu projeto.
+4.  **Copie os scripts que fizemos para esta pasta:**
+    Nós criamos três scripts principais. Vamos copiá-los para o seu novo diretório de projeto.
+
+    ```bash
+    # Script de gerenciamento (start/stop/status)
+    cp /usr/local/bin/dev ./
+
+    # Script do lançador gráfico (que o ícone usa)
+    cp /usr/local/bin/dev-launcher ./
+
+    # Script de preparação de permissões (que rodamos uma vez)
+    cp ~/Documentos/preparar_ambiente.sh ./ 
+    ```
+
+    *(Estou assumindo que o `preparar_ambiente.sh` ainda está na sua pasta Documentos. Se estiver em outro lugar, ajuste o caminho).*
+
+-----
+
+### Passo 3: Escrever o Arquivo `README.md`
+
+Este é o manual de instruções do seu projeto. Abra o arquivo `README.md` que está na sua pasta `fedora-lamp-ambiente` com o VS Code ou outro editor.
+
+Apague o conteúdo padrão e **cole o texto abaixo**. Ele contém todas as instruções baseadas no que fizemos.
 
 ````markdown
 # Ambiente de Desenvolvimento LAMP para Fedora
@@ -104,5 +125,4 @@ Para ter um ícone no menu de aplicativos, siga estes passos:
 
 <!-- end list -->
 
-```
-```
+````
